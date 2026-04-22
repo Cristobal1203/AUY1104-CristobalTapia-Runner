@@ -1,14 +1,11 @@
+name: CD - Release Pipeline
 on:
   push:
     tags:
-      - 'v*.*.*' # Solo al etiquetar v1.0.0, v2.3.4, etc.
-
+      - 'v*' # REQUISITO: Solo corre por tag
 jobs:
-  usar-receta-compartida:
+  release:
     uses: Cristobal1203/AUY1104-CristobalTapia-Main/.github/workflows/deploy-api.yaml@main
-    with:
-      image-name: demo-api
-      image-tag: ${{ github.ref_name }} # ej. v1.2.3 — misma etiqueta que en Git
     secrets:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
