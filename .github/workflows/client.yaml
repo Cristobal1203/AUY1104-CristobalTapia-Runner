@@ -1,8 +1,16 @@
-on: [push]
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
 
 jobs:
-  mi-job:
-    uses: Cristobal1203/AUY1104-CristobalTapia-Main/.github/workflows/deploy-api.yaml@main
+  usar-receta-compartida:
+    uses: asanchezo-duoc/AUY1104-SharedWorkflows/.github/workflows/deploy-api.yaml@main
+
+    with:
+      image-name: demo-api
+      image-tag: ${{ github.ref_name }}
 
     secrets:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
