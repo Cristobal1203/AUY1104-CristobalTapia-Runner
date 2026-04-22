@@ -2,7 +2,7 @@ on: [push]
 
 jobs:
   mi-job:
-    uses: asanchezo-duoc/AUY1104-SharedWorkflows/.github/workflows/deploy-api.yaml@pipeTest
+    uses: Cristobal1203/AUY1104-CristobalTapia-Main/.github/workflows/deploy-api.yaml@main
 
     secrets:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
