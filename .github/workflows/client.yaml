@@ -1,11 +1,9 @@
-name: CD - Release Pipeline
-on:
-  push:
-    tags:
-      - 'v*' # REQUISITO: Solo corre por tag
+on: [push]
+
 jobs:
-  release:
-    uses: Cristobal1203/AUY1104-CristobalTapia-Main/.github/workflows/deploy-api.yaml@main
+  mi-job:
+    uses: asanchezo-duoc/AUY1104-SharedWorkflows/.github/workflows/deploy-api.yaml@pipeTest
+
     secrets:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
