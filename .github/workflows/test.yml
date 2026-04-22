@@ -1,3 +1,5 @@
+# Sobrescribir el archivo con el contenido correcto
+cat > .github/workflows/test.yml << 'EOF'
 name: Test Pipeline
 
 on:
@@ -12,15 +14,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout código
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Configurar entorno (ajusta según tu lenguaje)
-        uses: actions/setup-node@v3   # o setup-python, etc.
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: Instalar dependencias
-        run: npm install              # o pip install -r requirements.txt
+        run: npm install
 
       - name: Ejecutar pruebas
-        run: npm test                 # o pytest, etc.
+        run: npm test
+EOF
