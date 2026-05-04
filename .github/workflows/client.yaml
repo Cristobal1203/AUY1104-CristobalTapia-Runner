@@ -13,7 +13,7 @@ on:
 jobs:
   usar-receta-compartida:
     # Delega al workflow reutilizable
-    uses: asanchezo-duoc/AUY1104-SharedWorkflows/.github/workflows/deploy-api.yaml@main
+    uses: Cristobal1203/AUY1104-CristobalTapia-Main/.github/workflows/deploy-api.yaml@main
 
     with:
       image-name: demo-api
