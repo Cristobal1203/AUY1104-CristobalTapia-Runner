@@ -1,9 +1,30 @@
-on: [push]
+# ─────────────────────────────────────────────────────────────
+# Este archivo vive en el repo del alumno / del proyecto.
+# Cuando publicas una versión con etiqueta tipo v1.2.3, GitHub ejecuta
+# la receta del repo central (SharedWorkflows) para empaquetar y subir la imagen.
+# ─────────────────────────────────────────────────────────────
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'   # Solo ejecuta cuando haces tags tipo v1.0.0, v2.3.4
+  workflow_dispatch:
 
 jobs:
-  mi-job:
-    uses: asanchezo-duoc/AUY1104-SharedWorkflows/.github/workflows/deploy-api.yaml@pipeTest
+  usar-receta-compartida:
+    # Delega al workflow reutilizable
+    uses: asanchezo-duoc/AUY1104-SharedWorkflows/.github/workflows/deploy-api.yaml@main
+
+    with:
+      image-name: demo-api
+
+      # Usa el nombre del tag (ej: v1.2.3)
+      image-tag: ${{ github.ref_name }}
+
+      # Variable de repositorio (Settings → Variables)
+      k3s-server-public-ip: ${{ vars.K3S_SERVER_PUBLIC_IP }}
 
     secrets:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      EA2_SSH_PRIVATE_KEY: ${{ secrets.EA2_SSH_PRIVATE_KEY }}
