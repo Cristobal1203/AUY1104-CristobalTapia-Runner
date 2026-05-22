@@ -28,6 +28,10 @@ function healthPayload() {
     ok: true,
     servicio: 'auy1104-api-ejemplo',
     mensaje: 'El servicio está en ejecución',
+    Integrantes: [
+      'Cristobal Tapia',
+      'Valentina Ochoa'
+    ]
   };
 }
 
