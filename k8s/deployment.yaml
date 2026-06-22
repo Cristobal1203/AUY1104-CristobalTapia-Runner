@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: cristobaltapia/demo-api:latest
+          image: cristobaltapia/demo-api:tag-inexistente-ea3
           imagePullPolicy: Always
           ports:
             - name: http
