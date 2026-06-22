@@ -25,7 +25,7 @@ describe('API HTTP (GET y POST)', () => {
     it('suma a y b por query', async () => {
       const res = await request(app).get('/api/suma').query({ a: '4', b: '5' });
       expect(res.status).toBe(200);
-      expect(res.body.resultado).toBe(9);
+      expect(res.body.resultado).toBe(999);
     });
     it('400 si parámetros inválidos', async () => {
       const res = await request(app).get('/api/suma').query({ a: 'x', b: '1' });
